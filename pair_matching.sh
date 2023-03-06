@@ -1,17 +1,24 @@
 #!/bin/bash
 
 dirpath=$1
+shift
+
+nums=("$@")
 
 cd "$dirpath"
 
-files=$(ls)
-
-for file1 in $files; do
-  num1=$(echo "$file1" | grep -o '[0-9]*')
-  for file2 in $files; do
-    num2=$(echo "$file2" | grep -o '[0-9]*')
-    if [ "$file1" != "$file2" ] && [ "$num1" == "$num2" ] && [ "$file1" \< "$file2" ]; then
-      echo "$file1 matches with $file2"
-    fi
-  done
+for file1 in *; do
+  num1=$(echo "$file1" | grep -Eo '[0-9]+')
+  if [[ -n $num1 ]]; then
+    for num in "${nums[@]}"; do
+      if [[ "$num1" == "$num" ]]; then
+        for file2 in *; do
+          num2=$(echo "$file2" | grep -Eo '[0-9]+')
+          if [[ -n $num2 && "$file1" != "$file2" && "$num1" == "$num2" && "$file1" < "$file2" ]]; then
+            echo "$file1 matches with $file2"
+          fi
+        done
+      fi
+    done
+  fi
 done
