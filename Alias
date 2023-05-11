@@ -1,0 +1,8 @@
+# If you use a specific path to your directory frequently and you don't want to type in the path everytime, you can make an alias to type in just one specific word and shell will take you to your target direstory"
+# The command below will make the alias:
+alias Anna='cd /projects/your/path/to/directory'
+# To make this command permanent we need to add it to .bashrc file in your home directory"
+nano ~/.bashrc
+# Add the alias command line to the end of the .bashrc file and save it.To apply the changes, either run the following command:
+source ~/.bashrc
+# everything should be set!
