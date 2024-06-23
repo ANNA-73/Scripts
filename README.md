@@ -9,4 +9,4 @@ If you use a specific path to your directory frequently and you don't want to ty
  files that have the same name and only different in their R1 and R2 printed in the same line.to execute: 'chmod +x file-name.sh' and then just do './file-name.sh'
 ## touch
 
-find /path/to/start/from -type d -exec touch {} +
+find /path/to/start/from -type f -exec touch {} +
